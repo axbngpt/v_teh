@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Арсений Масленниеов</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .top-right {
+        position: absolute;
+        top: 0;
+        right: 20px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000000;
+        font-size: 30px;
+        font-weight: bold;
+        margin-right: 25px;
+      }
+
+      a:hover {
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <br /><br /><br /><br />
+    <form name="calculator">
+      <input type="text" name="display" id="display" readonly />
+      <br />
+      <input type="button" value="1" onclick="appendToDisplay('1')" />
+      <input type="button" value="2" onclick="appendToDisplay('2')" />
+      <input type="button" value="3" onclick="appendToDisplay('3')" />
+      <input type="button" value="+" onclick="appendToDisplay('+')" />
+      <br />
+      <input type="button" value="4" onclick="appendToDisplay('4')" />
+      <input type="button" value="5" onclick="appendToDisplay('5')" />
+      <input type="button" value="6" onclick="appendToDisplay('6')" />
+      <input type="button" value="-" onclick="appendToDisplay('-')" />
+      <br />
+      <input type="button" value="7" onclick="appendToDisplay('7')" />
+      <input type="button" value="8" onclick="appendToDisplay('8')" />
+      <input type="button" value="9" onclick="appendToDisplay('9')" />
+      <input type="button" value="*" onclick="appendToDisplay('*')" />
+      <br />
+      <input type="button" value="C" onclick="clearDisplay()" />
+      <input type="button" value="0" onclick="appendToDisplay('0')" />
+      <input type="button" value="=" onclick="calculate()" />
+      <input type="button" value="/" onclick="appendToDisplay('/')" />
+    </form>
+    <script>
+      function appendToDisplay(value) {
+        document.calculator.display.value += value;
+      }
+
+      function clearDisplay() {
+        document.calculator.display.value = "";
+      }
+
+      function calculate() {
+        try {
+          document.calculator.display.value = eval(
+            document.calculator.display.value
+          );
+        } catch (error) {
+          document.calculator.display.value = "Ошибка";
+        }
+      }
+    </script>
+
+    <style>
+      body {
+        background-color: #ffffff;
+        background-image: url();
+      }
+    </style>
+
+    <div class="top-right">
+      <nav>
+        <ul>
+          <li><a href="about.html">Главная </a></li>
+          <li><a href="kotakt.html">Контакты</a></li>
+          <li><a href="portfolio.html">Портфолио</a></li>
+          <li><a href="knigi.html">Книги</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <footer>
+      <p>&copy; Масленниеов Арсений Вячеславовч<br />03 09 2023</p>
+    </footer>
+  </body>
+</html>

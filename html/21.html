@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Игра 21</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    #container {
+      margin-top: 50px;
+    }
+    #message {
+      font-size: 24px;
+    }
+    #buttons {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Игра 21</h1>
+  <div id="container">
+    <p id="message">Нажмите "Взять карту", чтобы начать игру.</p>
+    <p>Сумма карт: <span id="score">0</span></p>
+    <div id="buttons">
+      <button id="draw">Взять карту</button>
+      <button id="stand">Хватит</button>
+      <button id="reset">Начать заново</button>
+    </div>
+  </div>
+
+  <script>
+    
+    function getRandomCard() {
+      const cards = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+      const randomIndex = Math.floor(Math.random() * cards.length);
+      return cards[randomIndex];
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const drawButton = document.getElementById("draw");
+      const standButton = document.getElementById("stand");
+      const resetButton = document.getElementById("reset");
+      const message = document.getElementById("message");
+      const scoreSpan = document.getElementById("score");
+
+      let score = 0;
+      let isGameOver = false;
+
+      drawButton.addEventListener("click", function () {
+        if (!isGameOver) {
+          const card = getRandomCard();
+          const cardValue = parseInt(card) || (card === "A" ? 11 : 10); 
+          score += cardValue;
+          scoreSpan.textContent = score;
+
+          if (score === 21) {
+            message.textContent = "Поздравляем, вы победили!";
+            isGameOver = true;
+          } else if (score > 21) {
+            message.textContent = "Вы проиграли! Попробуйте еще раз.";
+            isGameOver = true;
+          }
+        }
+      });
+
+      standButton.addEventListener("click", function () {
+        if (!isGameOver) {
+          message.textContent = "Вы завершили ход. Подождите результат...";
+          isGameOver = true;
+          
+        }
+      });
+
+      resetButton.addEventListener("click", function () {
+        score = 0;
+        isGameOver = false;
+        scoreSpan.textContent = score;
+        message.textContent = "Нажмите 'Взять карту' или 'Хватит', чтобы начать игру заново.";
+      });
+    });
+  </script>
+  <div class="top-right">
+
+
+  
+
+</body>
+</html>
